@@ -79,6 +79,7 @@ extra_css:
   - css/base.css
   - css/styles.css
 repo_url: https://github.com/scaphold-io/scaphold-docs
+site_favicon: images/favicon.ico
 markdown_extensions:
   - codehilite:
       linenums: true
