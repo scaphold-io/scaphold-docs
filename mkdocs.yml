@@ -1,7 +1,85 @@
 site_name: Scaphold Docs
 pages:
-    - Home: index.md
-    - About: about.md
+    - Introduction: index.md
+    - Getting Started:
+      - Jumpstart Video: getting-started/jumpstart-video.md
+      - Starter Kits: getting-started/starter-kits.md
+    - Core Data:
+      - Introduction: coredata/index.md
+      - The Schema: coredata/schema.md
+      - Queries: coredata/queries.md
+      - Mutations: coredata/mutations.md
+      - Subscriptions: coredata/subscriptions.md
+      - Connections: coredata/connections-pagination.md
+    - Authentication:
+      - Auth Tokens: authentication/tokens.md
+      - Permissions: authentication/permissions.md
+      - Social Auth: authentication/social.md
+      - Super Users: authentication/super-users.md
+    - Realtime Subscriptions:
+      - Subscriptions With Apollo Client: realtime/subscriptions-apollo.md
+      - Subscriptions With React: realtime/subscriptions-react.md
+      - Build Slack Tutorial: realtime/slackr-chat-app.md
+    - Custom Logic:
+      - Introduction: custom-logic/index.md
+      - Function Composition: custom-logic/composition.md
+      - Pre Operations: custom-logic/pre-operations.md
+      - Operation Phase: custom-logic/operation-phase.md
+      - Post Operations: custom-logic/post-operations.md
+      - Async Operations: custom-logic/async-operations.md
+      - Logs & Examples: custom-logic/logs.md
+    - Persisted Queries:
+      - Introduction: persisted-queries/index.md
+      - Getting Started: persisted-queries/getting-started.md
+      - Querying From Client: persisted-queries/querying-from-client.md
+    - Files:
+      - Introduction: files/index.md
+      - Uploading: files/uploading.md
+      - Querying: files/querying.md
+    - Integrations:
+      - Introduction: integrations/index.md
+      - Email: integrations/email.md
+      - Monitoring: integrations/monitoring.md
+      - Passwordless Auth: integrations/passwordless.md
+      - Push Notifications: integrations/push.md
+      - Search:
+        - Setup: integrations/search/setup.md
+        - Querying: integrations/search/querying.md
+      - Social Auth:
+        - Setup: integrations/social/setup.md
+        - Login With Native SDKs: integrations/social/login-with-native.md
+        - Login With Auth0: integrations/social/login-with-auth0.md
+    - App Management:
+      - Aliases: app-management/alias.md
+      - Analytics: app-management/analytics.md
+      - Export Schema: app-management/export-schema.md
+      - Fork App: app-management/fork-app.md
+      - Teams: app-management/teams.md
+      - Multi Region: app-management/multi-region.md
+      - Admin Tokens: app-management/admin-tokens.md
+      - Token Expiration: app-management/token-expiration.md
+    - Tutorials:
+      - Build A Chat App: tutorials/realtime-apps-with-subscriptions.md
+      - Sending Push Notifications: tutorials/sending-push-notifications.md
+      - Setup iOS Push: tutorials/ios-push-notifications.md
+      - Setup Android Push: tutorials/android-push-notifications.md
+      - Migrating MongoDB: tutorials/migrate-mongodb-graphql.md
+      - Using Persisted Queries: tutorials/persisted-queries.md
+      - Advanced Relational Queries: tutorials/advanced-queries.md
+      - Authentication in GraphQL: tutorials/authentication-in-graphql.md
+      - Add Search With Algolia: tutorials/search-with-algolia.md
+      - Aggregations In GraphQL: tutorials/aggregations-in-graphql.md
+      - Integrate Apollo Optics: tutorials/apollo-optics-graphql-server.md
+      - Add Social Auth: tutorials/adding-social-auth.md
+    - Errors: errors.md
+    - Changelog: changelog.md
+    - FAQ: faq.md
 theme: 'material'
 extra_css:
   - css/base.css
+  - css/styles.css
+repo_url: https://github.com/scaphold-io/scaphold-docs
+markdown_extensions:
+  - codehilite:
+      linenums: true
+      use_pygments: true
