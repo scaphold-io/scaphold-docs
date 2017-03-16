@@ -1,0 +1,7 @@
+site_name: Scaphold Docs
+pages:
+    - Home: index.md
+    - About: about.md
+theme: 'material'
+extra_css:
+  - css/base.css
