@@ -87,3 +87,4 @@ markdown_extensions:
       use_pygments: true
 extra:
   logo: 'images/home.png'
+google_analytics: ['UA-93897607-1', 'auto']
