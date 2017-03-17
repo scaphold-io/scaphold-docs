@@ -2,10 +2,6 @@
 
 > **The code snippets in this sidebar are designed to work in your apps directly.** The requests are performed using the following resources.
 
-> GraphQL API: <script>document.write(window.apiUrl)</script>
-
-> Email address: <script>document.write(window.currentUserEmail)</script>
-
 Welcome! Scaphold is a backend-as-a-service platform that bundles all the tools you need to quickly build production-grade applications.
 In a matter of minutes, you can create your own **customizable GraphQL API** backed by our highly available cloud infrastructure hosted on AWS.
 
