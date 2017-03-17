@@ -5,3 +5,7 @@
 .md-footer-nav, .md-footer-meta {
   background-color: #29324B;
 }
+
+.md-icon--home {
+  background-image: url(/images/favicon.ico);
+}

@@ -1,4 +1,5 @@
-site_name: Scaphold Docs
+site_name: Scaphold | GraphQL Tutorials & Documentation
+site_description: Documentation for Scaphold.io's GraphQL Backend-as-a-Service. Learn how to rapidly build applications with GraphQL.
 pages:
     - Introduction: index.md
     - Getting Started:
@@ -84,3 +85,5 @@ markdown_extensions:
   - codehilite:
       linenums: true
       use_pygments: true
+extra:
+  logo: 'images/home.png'
