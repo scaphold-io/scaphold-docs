@@ -30,24 +30,24 @@ to start building on.
 
 [React, Angular 2 & Apollo Client](https://github.com/scaphold-io/angular2-apollo-client-webpack-starter)
 
-## [Vue](https://vuejs.org/)
+## [Vue 2](https://vuejs.org/)
 
-Vue is a progressive Javascript framework built that was designed to have a light footprint and to
-be incrementally adoptable.
+Vue 2 is a *progressive* Javascript view framework that is designed to have a light footprint and be incrementally adoptable. Vue 2 combines templating (like Angular) with a reactive Virtual DOM rendering engine based on VDOM for amazing rendering performance (x2 React).
 
-<img src="/images/quickstart/vue2.png" alt="React Native is the future of mobile development" style="width: 100px; height: 100px" />
+<img src="/images/quickstart/vue2.png" alt="Vue - view framework" style="width: 100px; height: 100px" />
 
-[React, Vue2, & Apollo Tutorial](https://github.com/mandricore/react-vue2-apollo)
+[Vue2, Apollo & Scaphold.io Starter kit](https://github.com/kristianmandrup/vue2-apollo-scaphold) with *User Registration* and *Login*
 
-[Vue2, Apollo & Scaphold Tutorial](https://github.com/kristianmandrup/vue2-apollo-scaphold)
+[Comparison with other SPA frameworks](https://vuejs.org/v2/guide/comparison.html)
+
+Vue 2 can also be used to develop cross platform native apps via [Apache Weex](https://github.com/apache/incubator-weex). See this [Tuturial](http://weex.apache.org/guide/)
 
 ## [React Native](https://facebook.github.io/react-native/)
 
 <img src="/images/quickstart/reactnative.svg" alt="React Native is the future of mobile development" style="width: 100px; height: 100px" />
 
 React Native is the new way to build mobile apps. You write your code once with
-Javascript and your app is automatically converted to native code and deployed so you can
-create rich experiences on any platform.
+Javascript and your app is automatically converted to native code and deployed so you can create rich experiences on any platform.
 
 [React Native VR](https://github.com/scaphold-io/react-vr-graphql)
 
