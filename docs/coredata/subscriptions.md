@@ -89,7 +89,7 @@ subscription SubscribeToNewMessages($messageFilter:MessageSubscriptionFilter) {
 You can play around with Subscriptions in our GraphiQL page! It's hooked up to handle web socket connections, so Subscription
 requests will work immediately. Normal HTTP clients won't work with Subscriptions since it requires a web socket connection.
 
-<img src="images/subscriptions/subs2.gif" alt="Subscriptions in GraphiQL" />
+<img src="/images/subscriptions/subs2.gif" alt="Subscriptions in GraphiQL" />
 
 This is what I'm doing:
 
