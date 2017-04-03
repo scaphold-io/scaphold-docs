@@ -85,7 +85,7 @@ This token informs your API what user is logged in at any given time and enables
       Note here that no server-side validation for the old password.
     </li>
     <li>
-      <b>Forgot password</b>: Use the <code>updateUserPassword</code> mutation to update a user's password given a user's <code>id</code>, <code>oldPassword</code>, and <code>newPassword</code>.
+      <b>Forgot password</b>: Use the <code>changeUserPassword</code> mutation to update a user's password given a user's <code>id</code>, <code>oldPassword</code>, and <code>newPassword</code>.
     </li>
   </ul>
 </aside>
