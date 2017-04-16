@@ -1,24 +1,7 @@
 # Errors
 
-> A typical Scaphold response
-
-```
-type ScapholdResult {
-    data: any
-    errors: [ScapholdError]
-}
-
-type ScapholdError {
-    message: string!
-    code: ErrorCode
-    param: string
-}
-```
-
-<aside class="notice">
 Errors from the Scaphold API will be returned as a list under the `errors` attribute at the root of the response.
-I.E. Scaphold responses adhere to the ScapholdResult type.
-</aside>
+I.E. Scaphold responses adhere to the `ScapholdResult` type.
 
 Error Code | Meaning
 ---------- | -------
@@ -33,3 +16,20 @@ Error Code | Meaning
 441 | Registration Failure -- Invalid registration information. E.G. a user with that username already exists.
 500 | Internal Server Error -- We had a problem with our server. Please contact us via slack or try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Happens very rarely.
+
+!!! note ""
+
+    A typical Scaphold response
+
+```
+type ScapholdResult {
+    data: any
+    errors: [ScapholdError]
+}
+
+type ScapholdError {
+    message: string!
+    code: ErrorCode
+    param: string
+}
+```

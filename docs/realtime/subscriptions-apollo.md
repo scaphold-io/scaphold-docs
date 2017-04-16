@@ -1,6 +1,33 @@
 ## Subscriptions With Apollo Client
 
-> Condensed example from our Slackr app (JavaScript only)
+Apollo Client is a GraphQL networking interface that provides a fully-featured
+GraphQL caching client for any server or UI framework. It's an easy-to-use GraphQL networking client
+that works with HTTP and web socket requests. We use it at Scaphold to power our web apps, and many
+of the examples in [our GitHub](https://github.com/scaphold-io). But you can also use it for your
+React Native apps as well to address mobile needs. They are coming out with support for native mobile
+iOS and Android clients as well. You can read more about it [here](http://dev.apollodata.com/).
+
+The Scaphold GraphiQL page has already implemented the subscription protocol for you. The good news is that it is really easy to set this up in your own application. Here is how.
+
+1. **Download Apollo Client from npm!** (Apollo Client works pretty much the same whether you are building a React, AngularJS, or vanilla JavaScript applications)
+
+    - `npm install apollo-client graphql-tag --save`
+
+    - If using React also `npm install react-apollo --save`
+
+    - If using Angular2 also `npm install angular2-apollo --save`
+
+2. **Configure the Apollo Client network layer to work with websockets.** To do this we can use the following two code snippets:
+
+    - The `addGraphQLSubscriptions` function retrofits the Apollo Client network interface with the subscribe and unsubscribe methods that we can use from our application code.
+
+    - The `makeApolloClient` function then creates a new Apollo Client instance, applies the subscription methods, and adds a peice of authentication middleware before returning the client for use in our application.
+
+This is all we need to do to configure our Apollo Client instance for GraphQL Subscriptions.
+
+!!! tip ""
+
+    Condensed example from our Slackr app
 
 ```javascript
 /* File: addGraphQLSubscriptions.js */
@@ -63,28 +90,3 @@ export function makeApolloClient() {
 
 /* End of File: makeApolloClient.js */
 ```
-
-Apollo Client is a (currently) JavaScript-only networking interface that provides a fully-featured
-caching GraphQL client for any server or UI framework. It's an easy-to-use GraphQL networking client
-that works with HTTP and web socket requests. We use it at Scaphold to power our web apps, and many
-of the examples in [our GitHub](https://github.com/scaphold-io). But you can also use it for your
-React Native apps as well to address mobile needs. They are coming out with support for native mobile
-iOS and Android clients as well. You can read more about it [here](http://dev.apollodata.com/).
-
-The Scaphold GraphiQL page has already implemented the subscription protocol for you. The good news is that it is really easy to set this up in your own application. Here is how.
-
-1) **Download Apollo Client from npm!** (Apollo Client works pretty much the same whether you are building a React, AngularJS, or vanilla JavaScript applications)
-
-- `npm install apollo-client graphql-tag --save`
-
-- If using React also `npm install react-apollo --save`
-
-- If using Angular2 also `npm install angular2-apollo --save`
-
-2) **Configure the Apollo Client network layer to work with websockets.** To do this we can use the following two code snippets:
-
-The `addGraphQLSubscriptions` function retrofits the Apollo Client network interface with the subscribe and unsubscribe methods that we can use from our application code.
-
-The `makeApolloClient` function then creates a new Apollo Client instance, applies the subscription methods, and adds a peice of authentication middleware before returning the client for use in our application.
-
-This is all we need to do to configure our Apollo Client instance for GraphQL Subscriptions.

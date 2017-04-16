@@ -1,5 +1,25 @@
+strong, b {
+  font-family: Avenir-Heavy;
+}
+
+.md-typeset a, .md-nav__link.md-nav__link--active {
+  color: #1DAAA0;
+}
+
+.md-typeset a:hover, .md-nav__link:hover {
+  color: #50DDD3;
+}
+
+.md-typeset [id] .headerlink:focus, .md-typeset [id]:hover .headerlink:hover, .md-typeset [id]:target .headerlink {
+  color: #50DDD3 !important;
+}
+
 .md-header {
-  background-color: #1daaa0;
+  background-color: #1DAAA0;
+}
+
+.md-nav.md-nav--secondary {
+  border-color: #1DAAA0;
 }
 
 .md-footer-nav, .md-footer-meta {
@@ -8,4 +28,9 @@
 
 .md-icon--home {
   background-image: url(/images/favicon.ico);
+}
+
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover,
+.md-typeset .codehilite::-webkit-scrollbar-thumb:hover {
+  background-color: #1DAAA0;
 }

@@ -5,6 +5,6 @@ from when it was issued. This refers to the token issued during mutation calls s
 
 To configure the token expiration time, please navigate to **Settings Page > Advanced**
 
-<aside class="notice">
-  The default value is 1,296,000 seconds (i.e. 15 days, or ~2 weeks).
-</aside>
+!!! note
+
+    The default value is 1,296,000 seconds (i.e. 15 days, or ~2 weeks).

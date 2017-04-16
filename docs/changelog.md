@@ -1,5 +1,80 @@
 # Changelog
 
+## April 12, 2017
+
+- Added [Algolia geo-search query parameters](/integrations/search/#geo-search)
+
+- Updated docs and layout
+
+## April 3, 2017
+
+- Check expired and/or invalid token if `Authorization` header is provided
+
+- Authorization errors for invalid tokens now throw `401` error status codes instead of `403`
+
+- `401` errors are thrown if auth token is malformed now
+
+- Bug fixes:
+    - Top-level error handling should not throw stack trace
+
+## March 21, 2017
+
+- Upgraded subscriptions package to Apollo 1.0
+
+## March 10, 2017
+
+- Added [AND & OR operators](/coredata/queries/#querying-with-and-or)
+
+- Allow enum connections
+
+- Bug fixes:
+    - Algolia delete indexes after integration is deleted
+    - Stripe integration via custom logic
+    - Role scoped permissions update for admin user
+
+## February 22, 2017
+
+- List of date errors
+
+- Bug fixes:
+    - Updates with logic functions causing problems on return values.
+
+## February 17, 2017
+
+- Added [persisted queries](/persisted-queries/)
+
+- Added `JSON` type for fields
+
+- Bug fixes:
+    - Fix for iOS and Android push notifications
+    - Return unmasked Stripe IDs
+    - Apollo Optics bug to stop background tasks
+
+## February 9, 2017
+
+- Deeply nested mutation permissions: you can now use deep `userFields` to authorize permissions for mutations multple models away.
+
+- `node` on `viewer` now returns app ID
+
+## February 1, 2017
+
+- `self` option for permissions
+
+- Formatting for type descriptions
+
+- Custom payment plans now an option
+
+## January 23, 2017
+
+- UTF8 databases
+
+- Bug fixes:
+    - Fix for `_typename` in aggregations.
+
+## January 17, 2017
+
+- Added [aggregations on connections](/aggregations/basics/)
+
 ## January 9, 2017
 
 - [Scaphold Community Page](https://scaphold.io/community/)! Find all the resources you need to launch a production app with GraphQL.

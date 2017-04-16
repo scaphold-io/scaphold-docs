@@ -1,6 +1,8 @@
 ## Permissions (Authorization)
 
-> <b>Important</b>: If a type has no permissions then anyone can perform any operations on it so make sure you add them before launching!
+!!! note "Important"
+
+    If a type has no permissions then anyone can perform any operations on it so make sure you add them before launching!
 
 Scaphold implements a permissions system that allows you to define powerful access control rules by leveraging a combination of features from role-based access control systems (RBAC) as well as the connections in your API's graph to define what users can access what information.
 
@@ -26,7 +28,7 @@ The following sections delineate the various types of permissioning that you can
 
 ### Roles
 
-> GraphQL types used in role-based permissioning to manage roles, members, and access levels.
+GraphQL types used in role-based permissioning to manage roles, members, and access levels.
 
 ```graphql
 type User {
@@ -77,8 +79,10 @@ removeFromUserRolesConnection | `userId: ID!`, `roleId: ID!` | Removes a user fr
 
 By default, we create a special `admin` role for each of your apps. Users that are enrolled into the `admin` role are given full access to your GraphQL API without having to specify any custom permissions.
 
-> `Role` scoped permissions can be used alongside existing `Relation` scoped permissions to easily create complex access control rules. Let's take an example where we would like to have a <b>set of notes</b> that <b>only executives of my company can see</b>.
-Part of our schema might look something like this:
+!!! note
+
+    `Role` scoped permissions can be used alongside existing `Relation` scoped permissions to easily create complex access control rules. Let's take an example where we would like to have a **set of notes** that <b>only executives of my company can see</b>.
+    Part of our schema might look something like this:
 
 ```graphql
 // Schema
@@ -111,12 +115,13 @@ type ExecutiveNote {
 
 ### Relation
 
-> Example of `Relation` permission
+Example of `Relation` permission
 
-> In Slack, a user should only be able to view messages that belong to a channel that you're a member of. Looking at the example to the right, if you wanted to add this permission, you would add a
-`Relation` scoped permission to the `Message` type with the user fields `channel.members`.
+!!! quote ""
 
-> <img src="/images/authentication/Relation_Permission.png" alt="Relation Permission" width="50%" />
+    In Slack, a user should only be able to view messages that belong to a channel that you're a member of. Looking at the example to the right, if you wanted to add this permission, you would add a `Relation` scoped permission to the `Message` type with the user fields `channel.members`.
+
+<img src="/images/authentication/Relation_Permission.png" alt="Relation Permission" width="50%" />
 
 ```graphql
 # Simple Slack schema
@@ -137,7 +142,7 @@ type Message {
 `Relation` scoped permissions use the connections in your data's graph to authorize behaviors. When you add a `Relation` permission, you can specify a path in your data graph that from the type you're adding the permission
 to back to the authenticated user.
 
-> In our example, you would have to use the query like this:
+In our example, you would have to use the query like this:
 
 ```graphql
 {
@@ -153,7 +158,9 @@ to back to the authenticated user.
 }
 ```
 
-> <aside class="notice">Querying through `viewer.allMessages` would throw a permissioning error.</aside>
+!!! warning ""
+
+    Querying through `viewer.allMessages` would throw a permissioning error.
 
 In order to keep queries that are protected by `Relation` scoped permissions performant, you must query through `viewer.user`. This allows us to trace the user field's path to ensure that you're only accessing objects
 related to the logged in user.

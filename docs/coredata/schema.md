@@ -1,6 +1,32 @@
 ## The Schema
 
-> Example schema
+Every application you build on Scaphold will have a schema. A schema consists of a set of types and a set of
+connections between those types. This connected web of types creates the 'graph' that will come to define your API.
+
+One of GraphQL's biggest benefits is that it provides a mechanism to express types at the API level. Types have
+existed in general purpose programming languages and other query languages like SQL for years so it's about
+time we brought it to APIs.
+
+There are **two main classes of types** that you need to be aware of on Scaphold.
+
+1. Types that implement the `Node` interface.
+These are first-class entities in your Scaphold API. We will generate queries and mutations for them, you may create
+connections between them, and you may use them with event-based integrations.
+
+2. Types that *don't* implement the `Node` interface.
+These are auxiliary structures in your GraphQL API and these objects are stored inline within other `Node` types.
+Scaphold will not create queries and mutations for non-node types nor can you use them to fire event-based integrations.
+You can, however, still relate them to other objects via the `List` type or as an inline object.
+
+Scaphold's [Schema Designer](https://scaphold.io/apps) allows you to define complex schemas in a fraction of the
+time while also offering you a convenient place to setup access control rules ([permissions](#permissions)) for your
+data. As you define the structure of your schema we'll generate the backend that will host your custom GraphQL API. By
+default we generate a `get`, `create`, `update`, and `delete` operation for each type in your schema. And to give you that
+extra boost, we also create mutations to handle user authentication, schema migration, and integration management.
+
+!!! tip ""
+
+    Example schema
 
 ```graphql
 type ScapholdSchema {
@@ -36,30 +62,6 @@ interface Node {
 }
 ```
 
-Every application you build on Scaphold will have a schema. A schema consists of a set of types and a set of
-connections between those types. This connected web of types creates the 'graph' that will come to define your API.
-
-One of GraphQL's biggest benefits is that it provides a mechanism to express types at the API level. Types have
-existed in general purpose programming languages and other query languages like SQL for years so it's about
-time we brought it to APIs.
-
-There are **two main classes of types** that you need to be aware of on Scaphold.
-
-1. Types that implement the `Node` interface.
-These are first-class entities in your Scaphold API. We will generate queries and mutations for them, you may create
-connections between them, and you may use them with event-based integrations.
-
-2. Types that *don't* implement the `Node` interface.
-These are auxiliary structures in your GraphQL API and these objects are stored inline within other `Node` types.
-Scaphold will not create queries and mutations for non-node types nor can you use them to fire event-based integrations.
-You can, however, still relate them to other objects via the `List` type or as an inline object.
-
-Scaphold's [Schema Designer](https://scaphold.io/apps) allows you to define complex schemas in a fraction of the
-time while also offering you a convenient place to setup access control rules ([permissions](#permissions)) for your
-data. As you define the structure of your schema we'll generate the backend that will host your custom GraphQL API. By
-default we generate a `get`, `create`, `update`, and `delete` operation for each type in your schema. And to give you that
-extra boost, we also create mutations to handle user authentication, schema migration, and integration management.
-
 ### Scalars
 
 Name | Description
@@ -74,9 +76,7 @@ DateTime | Valid timestamp that can be converted to standard ISO 8601 date time 
 
 ### Types
 
-> <aside class="notice">
-  Scaphold provides 3 objects types to start off with: <a href="#token-auth">User</a>, <a href="#roles">Role</a>, and <a href="#files">File</a>.
-</aside>
+Scaphold provides 3 objects types to start off with: <a href="#token-auth">User</a>, <a href="#roles">Role</a>, and <a href="#files">File</a>.
 
 ```graphql
 type Computer {
@@ -91,9 +91,7 @@ type Computer {
 }
 ```
 
-> <aside class="notice">
-  Scaphold provides 3 interfaces to start off with: <a href="#the-schema">Node</a>, <a href="#the-schema">Timestamped</a>, and <a href="#files">Blob</a>.
-</aside>
+Scaphold provides 3 interfaces to start off with: <a href="#the-schema">Node</a>, <a href="#the-schema">Timestamped</a>, and <a href="#files">Blob</a>.
 
 ```graphql
 interface Animal {
@@ -103,9 +101,7 @@ interface Animal {
 }
 ```
 
-> <aside class="notice">
-  Scaphold provides 2 enums to start off with: <a href="#authentication">CredentialType</a> and <a href="#permissions-authorization">AccessLevel</a>.
-</aside>
+Scaphold provides 2 enums to start off with: <a href="#authentication">CredentialType</a> and <a href="#permissions-authorization">AccessLevel</a>.
 
 ```graphql
 enum HouseTypeEnum {

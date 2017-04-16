@@ -1,6 +1,27 @@
 ## Connections & Pagination
 
-> Each type will have associated `Connection` types like so:
+We use the concept of `Connections` to provide a standardized way of paginating through large sets of objects.
+You can use the `Connection` type when defining your schema whenever you need to model relations on potentially
+large sets of data.
+
+Connections expose the following arguments:
+
+Name | Type | Description
+-------------- | -------------- | --------------
+where | `Object` | Object that represents SQL-like terms used for [filtering](#filtering-whereargs) on a per-field basis
+orderBy | `List` | Fields that you wish to order by, and the order in which your app needs the data (`ASC` or `DESC`)
+first | `Int` | Acts as a limiting number of records to return and counts forward (i.e. from 0 to n)
+after | `String` | Pass in the cursor of an object, and you will retrieve the data **after** that particular record in a paginated list
+last | `Int` | Acts as a limiting number of records to return and counts backward (i.e. from n to 0)
+before | `String` | Pass in the cursor of an object, and you will retrieve the data **before** that particular record in a paginated list
+
+!!! note ""
+
+    Although connections expose <code>first</code>, <code>after</code>, <code>last</code>, and <code>before</code> we strongly recommend that you only ever use either
+    (<code>first</code> and <code>after</code>) or (<code>last</code> and <code>before</code>) together at once as unexpected behavior can occur if you use both at the same time.
+    The <code>orderBy</code> paramater allows you to order your data with respect to a field in the connected type and we will maintain the order throughout the pagination.
+
+Each type will have associated `Connection` types like so:
 
 ```graphql
 type XConnection {
@@ -19,7 +40,7 @@ type PageInfo {
 }
 ```
 
-> All connection fields will take the form:
+All connection fields will take the form:
 
 ```graphql
 query {
@@ -44,28 +65,23 @@ query {
 }
 ```
 
-We use the concept of `Connections` to provide a standardized way of paginating through large sets of objects.
-You can use the `Connection` type when defining your schema whenever you need to model relations on potentially
-large sets of data.
-
-Connections expose the following arguments:
-
-Name | Type | Description
--------------- | -------------- | --------------
-where | `Object` | Object that represents SQL-like terms used for [filtering](#filtering-whereargs) on a per-field basis
-orderBy | `List` | Fields that you wish to order by, and the order in which your app needs the data (`ASC` or `DESC`)
-first | `Int` | Acts as a limiting number of records to return and counts forward (i.e. from 0 to n)
-after | `String` | Pass in the cursor of an object, and you will retrieve the data **after** that particular record in a paginated list
-last | `Int` | Acts as a limiting number of records to return and counts backward (i.e. from n to 0)
-before | `String` | Pass in the cursor of an object, and you will retrieve the data **before** that particular record in a paginated list
-
-<aside class="notice">
-  Although connections expose <code>first</code>, <code>after</code>, <code>last</code>, and <code>before</code> we strongly recommend that you only ever use either
-  (<code>first</code> and <code>after</code>) or (<code>last</code> and <code>before</code>) together at once as unexpected behavior can occur if you use both at the same time.
-  The <code>orderBy</code> paramater allows you to order your data with respect to a field in the connected type and we will maintain the order throughout the pagination.
-</aside>
-
 ### One-to-One
+
+Given two types, `Country` and `CapitalCity`, you can designate a one-to-one relationship between them since one country can only have one capital city. In a one-to-one connection
+between two types, there will be a field on each of the connected types that refers back to the other (i.e. reverse name). With that, you can associate an instance of `Country`
+with another instance of `CapitalCity`.
+
+**Steps:**
+
+1. Provided the two types have been created already, add a field called `country` to `CapitalCity` with this configuration.
+
+    <img src="/images/coredata/One_To_One.png" alt="1-to-1 Connection" style="max-width: 50%" />
+
+2. Create an instance of `Country`.
+
+3. Create an instance of `CapitalCity`.
+
+4. Update the country instance with the id of the newly created capital city on the `capitalCityId` field.
 
 ```shell
 curl -X POST https://us-west-2.api.scaphold.io/graphql/scaphold-graphql \
@@ -118,7 +134,7 @@ request({
 });
 ```
 
-> The above command returns an object structured like this:
+The above command returns an object structured like this:
 
 ```json
 {
@@ -137,23 +153,25 @@ request({
 }
 ```
 
-Given two types, `Country` and `CapitalCity`, you can designate a one-to-one relationship between them since one country can only have one capital city. In a one-to-one connection
-between two types, there will be a field on each of the connected types that refers back to the other (i.e. reverse name). With that, you can associate an instance of `Country`
-with another instance of `CapitalCity`.
+### One-to-Many
+
+One-to-many relationships work very similarly to one-to-one relationships. The difference is that after you connect two types, you *must* update the instance on the "many side" of the
+connection. Only the "many side" instance will have a field that associates it to an instance of the "one side" of the relationship.
+
+Given two types, `User` and `File`, you can designate a one-to-many relationship between them since one user can have multiple files, while a file can only have one owner (user). In a
+one-to-many connection between two types, there will be a field injected on the file type called ownerId (id of the user). With that, you can associate an instance of `User` with another instance of `File`.
 
 **Steps:**
 
-1. Provided the two types have been created already, add a field called `country` to `CapitalCity` with this configuration.
+1. Provided the two types have been created already, add a field called `files` to `User` with this configuration.
 
-<img src="/images/coredata/One_To_One.png" alt="1-to-1 Connection" style="max-width: 50%" />
+    <img src="/images/coredata/One_To_Many.png" alt="1-to-Many Connection" style="max-width: 50%" />
 
-2. Create an instance of `Country`.
+2. Create an instance of `User`.
 
-3. Create an instance of `CapitalCity`.
+3. Create an instance of `File`.
 
-4. Update the country instance with the id of the newly created capital city on the `capitalCityId` field.
-
-### One-to-Many
+4. Update the file instance with the id of the newly created user on the `ownerId` field.
 
 ```shell
 curl -X POST https://us-west-2.api.scaphold.io/graphql/scaphold-graphql \
@@ -206,7 +224,7 @@ request({
 });
 ```
 
-> The above command returns an object structured like this:
+The above command returns an object structured like this:
 
 ```json
 {
@@ -225,27 +243,11 @@ request({
 }
 ```
 
-One-to-many relationships work very similarly to one-to-one relationships. The difference is that after you connect two types, you *must* update the instance on the "many side" of the
-connection. Only the "many side" instance will have a field that associates it to an instance of the "one side" of the relationship.
-
-Given two types, `User` and `File`, you can designate a one-to-many relationship between them since one user can have multiple files, while a file can only have one owner (user). In a
-one-to-many connection between two types, there will be a field injected on the file type called ownerId (id of the user). With that, you can associate an instance of `User` with another instance of `File`.
-
-**Steps:**
-
-1. Provided the two types have been created already, add a field called `files` to `User` with this configuration.
-
-<img src="/images/coredata/One_To_Many.png" alt="1-to-Many Connection" style="max-width: 50%" />
-
-2. Create an instance of `User`.
-
-3. Create an instance of `File`.
-
-4. Update the file instance with the id of the newly created user on the `ownerId` field.
-
 ### Many-to-Many
 
-> For example, suppose we have the following schema:
+Many-to-many connections are defined by having two types with Connection fields pointing to one another via their `reverseName` and have a special workflow for managing edges between their objects.
+
+For example, suppose we have the following schema:
 
 ```graphql
 type User {
@@ -264,9 +266,7 @@ type Post {
 }
 ```
 
-Many-to-many connections are defined by having two types with Connection fields pointing to one another via their `reverseName` and have a special workflow for managing edges between their objects.
-
-Given the example on the right, Scaphold will generate 3 special mutations for dealing with the many-to-many relations between **User** and **Post** via the edits & editors fields. These mutations will be:
+Scaphold will generate 3 special mutations for dealing with the many-to-many relations between **User** and **Post** via the edits & editors fields. These mutations will be:
 
 1. `addToUserEditsConnection`
 2. `updateUserEditsConnection`
@@ -274,13 +274,29 @@ Given the example on the right, Scaphold will generate 3 special mutations for d
 
 These mutations can be used to add edges between objects in the many-to-many connection.
 
-<aside class="notice">
-  Connections are bi-directional and thus if you use addToUserEditsConnection(...) to add a post to a users set of edited posts, then it will also add that user to the posts set of editors.
-</aside>
+!!! note
 
-**Special Case**
+    Connections are bi-directional and thus if you use addToUserEditsConnection(...) to add a post to a users set of edited posts, then it will also add that user to the posts set of editors.
 
-> Special Case Example
+#### Special Case
+
+If you wanted to create a many-to-many relationship between a type and itself, Scaphold makes it easy to do so! Perhaps you wanted to create a relation between a User type and itself, thereby defining a friendship.
+
+The steps to do so are:
+
+1. Add a field to User called `friends`.
+
+2. It is a `Connection` of type `User` with a many-to-many relationship and a **reverse name that is the same as the field name**. Upon selecting the many-to-many relationship, a new field will appear called `Connection Name`.
+This will be the name of the "join table" (in the SQL sense) that will be automatically generated for you after creating the new connection.
+
+    <img src="/images/coredata/Many_To_Many.png" alt="Many-to-Many Connection" style="max-width: 50%" />
+
+3. The resulting "join table" will be a new type in your schema. This creates a new table in Scaphold that will hold all your data that pertains to the
+edges of the connection for friends on the User type and you can add additional fields to this type as well.
+
+    <img src="/images/coredata/Join_Table.png" alt="Join Table" />
+
+Example:
 
 ```shell
 curl -X POST https://us-west-2.api.scaphold.io/graphql/scaphold-graphql \
@@ -337,7 +353,7 @@ request({
 });
 ```
 
-> The above command returns an object structured like this:
+The above command returns an object structured like this:
 
 ```json
 {
@@ -358,19 +374,3 @@ request({
   }
 }
 ```
-
-If you wanted to create a many-to-many relationship between a type and itself, Scaphold makes it easy to do so! Perhaps you wanted to create a relation between a User type and itself, thereby defining a friendship.
-
-The steps to do so are:
-
-1. Add a field to User called `friends`.
-
-2. It is a `Connection` of type `User` with a many-to-many relationship and a **reverse name that is the same as the field name**. Upon selecting the many-to-many relationship, a new field will appear called `Connection Name`.
-This will be the name of the "join table" (in the SQL sense) that will be automatically generated for you after creating the new connection.
-
-<img src="/images/coredata/Many_To_Many.png" alt="Many-to-Many Connection" style="max-width: 50%" />
-
-3. The resulting "join table" will be a new type in your schema. This creates a new table in Scaphold that will hold all your data that pertains to the
-edges of the connection for friends on the User type and you can add additional fields to this type as well.
-
-<img src="/images/coredata/Join_Table.png" alt="Join Table" />

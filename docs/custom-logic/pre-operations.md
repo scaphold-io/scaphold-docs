@@ -37,7 +37,8 @@ At any step you can throw an http error to invalidate an input and we will propa
 
 ## Manipulate Input and Pass Metadata
 
-If this were our original input
+If this were our original input:
+
 ```javascript
 {
   "input": {
@@ -48,7 +49,7 @@ If this were our original input
 }
 ```
 
-and our first function returned this payload:
+And our first function returned this payload:
 
 ```javascript
 {
@@ -83,4 +84,4 @@ Then the next function in the composition would receive this body:
 ## Passing Input to the Operation Phase
 
 After the last pre-operation function, Scaphold will pass the object under the `input` key on to the operation phase where it will be persisted. Keep this in mind as the object under
-the input key should adhere to the mutation's input type. e.g. if we were calling the `createUser` mutation the object under the `input` key should adhere to the `CreateUserInput` type.
+the input key should adhere to the mutation's input type. e.g. If we were calling the `createUser` mutation the object under the `input` key should adhere to the `CreateUserInput` type.

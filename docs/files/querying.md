@@ -1,7 +1,19 @@
 # Querying Files
 
-> Example of querying for a file
-File ID: `RmlsZTo5`
+Querying files acts the same as other types. All types that implement `Blob` have a field `blobUrl` and `blobMimeType`
+that are automatically managed by Scaphold. The `blobUrl` is a pre-signed URL that points to your file in a private
+blob store hosted on Amazon S3. If youre app is on a paid tier, all pre-signed URLs will be served by
+a globally distributed CDN hosted by Amazon CloudFront.
+
+!!! tip ""
+
+    Example of querying for a file
+
+!!! note ""
+
+    File ID: `RmlsZTo5`
+
+## cURL
 
 ```shell
 curl -X POST https://us-west-2.api.scaphold.io/graphql/scaphold-graphql \
@@ -9,6 +21,8 @@ curl -X POST https://us-west-2.api.scaphold.io/graphql/scaphold-graphql \
   -d '{ "query": "query GetFile { getFile(id: \"RmlsZTo5\") { id name blobMimeType blobUrl user { id username } } }",
     "variables": {} }'
 ```
+
+## JavaScript
 
 ```javascript
 var request = require('request');
@@ -49,7 +63,9 @@ request({
 });
 ```
 
-> The above command returns an object structured like this:
+---
+
+The above command returns an object structured like this:
 
 ```json
 {
@@ -67,8 +83,3 @@ request({
   }
 }
 ```
-
-Querying files acts the same as other types. All types that implement `Blob` have a field `blobUrl` and `blobMimeType`
-that are automatically managed by Scaphold. The `blobUrl` is a pre-signed URL that points to your file in a private
-blob store hosted on Amazon S3. If youre app is on a paid tier, all pre-signed URLs will be served by
-a globally distributed CDN hosted by Amazon CloudFront.

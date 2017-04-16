@@ -1,10 +1,12 @@
 site_name: Scaphold | GraphQL Tutorials & Documentation
 site_description: Documentation for Scaphold.io's GraphQL Backend-as-a-Service. Learn how to rapidly build applications with GraphQL.
+site_url: 'https://docs.scaphold.io'
 pages:
-    - Introduction: index.md
+    - Welcome: index.md
     - Getting Started:
-      - Jumpstart Video: getting-started/jumpstart-video.md
+      - Quickstart Video: getting-started/quickstart-video.md
       - Starter Kits: getting-started/starter-kits.md
+      - Community: getting-started/community.md
     - Core Data:
       - Introduction: coredata/index.md
       - The Schema: coredata/schema.md
@@ -14,6 +16,7 @@ pages:
       - Connections: coredata/connections-pagination.md
     - Authentication:
       - Auth Tokens: authentication/tokens.md
+      - Change Password: authentication/change-password.md
       - Permissions: authentication/permissions.md
       - Social Auth: authentication/social.md
       - Super Users: authentication/super-users.md
@@ -21,6 +24,12 @@ pages:
       - Subscriptions With Apollo Client: realtime/subscriptions-apollo.md
       - Subscriptions With React: realtime/subscriptions-react.md
       - Build Slack Tutorial: realtime/slackr-chat-app.md
+    - Search:
+      - Full-Text Search: search/fulltext-search.md
+      - Geo-Search: search/geo-search.md
+    - Aggregations:
+      - Basics: aggregations/basics.md
+      - Advanced: aggregations/advanced.md
     - Custom Logic:
       - Introduction: custom-logic/index.md
       - Function Composition: custom-logic/composition.md
@@ -43,13 +52,11 @@ pages:
       - Monitoring: integrations/monitoring.md
       - Passwordless Auth: integrations/passwordless.md
       - Push Notifications: integrations/push.md
-      - Search:
-        - Setup: integrations/search/setup.md
-        - Querying: integrations/search/querying.md
+      - Search: integrations/search.md
       - Social Auth:
         - Setup: integrations/social/setup.md
-        - Login With Native SDKs: integrations/social/login-with-native.md
         - Login With Auth0: integrations/social/login-with-auth0.md
+        - Login With Native SDKs: integrations/social/login-with-native.md
     - App Management:
       - Aliases: app-management/alias.md
       - Analytics: app-management/analytics.md
@@ -82,9 +89,34 @@ extra_css:
 repo_url: https://github.com/scaphold-io/scaphold-docs
 site_favicon: images/favicon.ico
 markdown_extensions:
+  - admonition
   - codehilite:
       linenums: true
       use_pygments: true
+  - toc(permalink=true)
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tasklist(custom_checkbox=true)
 extra:
   logo: 'images/home.png'
+  font:
+    text: 'Avenir'
+    code: 'Mono'
+  social:
+    - type: 'github'
+      link: 'https://github.com/scaphold-io'
+    - type: 'twitter'
+      link: 'https://twitter.com/ScapholdDotIO'
+    - type: 'facebook'
+      link: 'https://www.facebook.com/scaphold/'
+    - type: 'youtube'
+      link: 'https://www.youtube.com/channel/UC3CKbmn1jYp5fRoCIiBrsGg'
+    - type: 'slack'
+      link: 'http://slack.scaphold.io'
+    - type: 'linkedin'
+      link: 'https://www.linkedin.com/company/10780129'
+    - type: 'envelope'
+      link: 'mailto:hi@scaphold.io'
 google_analytics: ['UA-93897607-1', 'auto']

@@ -18,7 +18,9 @@ For example, think about a chat application like **Slack**. To create a good use
 
 To build an app like Slack, we need to be able to say:
 
-> Hey, every time someone posts a new message to a channel I am a member of, tell me!
+!!! quote
+
+    Hey, every time someone posts a new message to a channel I am a member of, tell me!
 
 With subscriptions we can do this by issuing a query like this:
 

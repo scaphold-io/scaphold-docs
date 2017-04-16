@@ -1,6 +1,6 @@
 Post-operations behave very similarly to pre-operations with one exception. When we call out to post-operation functions, we include the result of the operation under the `payload` key. Post operations also define a payload selection set that they use to selectively grab fields from the mutation payload. They will also receive the metadata added by the functions before it in the chain (included the metadata from pre-operation functions).
 
-Using our same example, if our first post-operation function had this selection set
+Using our same example, if our first post-operation function had this selection set:
 
 ```graphql
 {
@@ -9,7 +9,6 @@ Using our same example, if our first post-operation function had this selection 
   }
 }
 ```
-
 
 Then the first post-operation function would receive a request body like this:
 
@@ -27,9 +26,11 @@ Then the first post-operation function would receive a request body like this:
 }
 ```
 
-Note: You cannot manipulate the payload directly but you can issue mutations as well
-as attach metadata. The post-operation functions are particularly useful for managing the
-connections of newly created objects.
+!!! note
+
+    You cannot manipulate the payload directly but you can issue mutations as well
+    as attach metadata. The post-operation functions are particularly useful for managing the
+    connections of newly created objects.
 
 ## Managing Connections in Post Operations
 

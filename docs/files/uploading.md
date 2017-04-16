@@ -1,7 +1,19 @@
 # Uploading Files
 
-> Example file upload
-Mark Zuckerberg's user ID: `VXNlcjoxMA==`
+Uploading files is simple. All you need to do is attach the file to a multipart/form-data request
+and point to it using the `blobFieldName` attribute in the `Blob` implemented type's input object.
+
+All types that implement `Blob` will receive an additional input field called `blobFieldName`.
+
+!!! tip ""
+
+    Example file upload
+
+!!! note ""
+
+    Mark Zuckerberg's user ID: `VXNlcjoxMA==`
+
+## cURL
 
 ```shell
 curl -v https://us-west-2.api.scaphold.io/graphql/scaphold-graphql \
@@ -10,6 +22,8 @@ curl -v https://us-west-2.api.scaphold.io/graphql/scaphold-graphql \
   -F 'variables={ "input": { "name": "Profile Picture", "userId": "VXNlcjoxMA==", "blobFieldName": "myBlobField" } };type=application/json' \
   -F myBlobField=@mark-zuckerberg.jpg
 ```
+
+## JavaScript
 
 ```javascript
 
@@ -58,28 +72,7 @@ fetch("https://us-west-2.api.scaphold.io/graphql/scaphold-graphql", {
 });
 ```
 
-> The above command returns an object structured like this:
-
-```json
-{
-  "data": {
-    "createFile": {
-      "changedFile": {
-        "id": "RmlsZTo5",
-        "name": "Mark Zuck's Profile Picture",
-        "blobMimeType": "image/jpeg",
-        "blobUrl": "https://s3-us-west-2.amazonaws.com/production.us-west-2.scaphold.v2.customer/44be086f-bf33-4997-8136-9c01d99a88c4/data/2fb4b11d-cef9-465d-9ad6-e3d8b693f121/2b86488a-7114-4071-9e30-157855475eb7?AWSAccessKeyId=AKIAJIC3JY2ICINJH2OQ&Expires=1481686711&Signature=pa4QbkPCk%2BXlgSrKBWcRKsEckSs%3D",
-        "user": {
-          "id": "VXNlcjoxMA==",
-          "username": "Mark Zuckerberg"
-        }
-      }
-    }
-  }
-}
-```
-
-> If you are using react-native use this
+## React Native
 
 ```javascript
 // You must also install these npm modules:
@@ -131,7 +124,25 @@ RNFetchBlob.fetch(
 );
 ```
 
-Uploading files is simple. All you need to do is attach the file to a multipart/form-data request
-and point to it using the `blobFieldName` attribute in the `Blob` implemented type's input object.
+---
 
-All types that implement `Blob` will receive an additional input field called `blobFieldName`.
+The above command returns an object structured like this:
+
+```json
+{
+  "data": {
+    "createFile": {
+      "changedFile": {
+        "id": "RmlsZTo5",
+        "name": "Mark Zuck's Profile Picture",
+        "blobMimeType": "image/jpeg",
+        "blobUrl": "https://s3-us-west-2.amazonaws.com/production.us-west-2.scaphold.v2.customer/44be086f-bf33-4997-8136-9c01d99a88c4/data/2fb4b11d-cef9-465d-9ad6-e3d8b693f121/2b86488a-7114-4071-9e30-157855475eb7?AWSAccessKeyId=AKIAJIC3JY2ICINJH2OQ&Expires=1481686711&Signature=pa4QbkPCk%2BXlgSrKBWcRKsEckSs%3D",
+        "user": {
+          "id": "VXNlcjoxMA==",
+          "username": "Mark Zuckerberg"
+        }
+      }
+    }
+  }
+}
+```

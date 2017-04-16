@@ -1,4 +1,4 @@
-## Email
+# Email
 
 Use **Mailgun** to send and manage email from within your application. Bind emails to events to automate your workflow.
 

@@ -5,6 +5,6 @@ like any other auth token in Scaphold, you become an admin user. This is useful 
 
 To create a admin token, navigate to **Settings Page > Admin Tokens > Create**
 
-<aside class="notice">
-  Note: Admin tokens never expire, unless you delete them.
-</aside>
+!!! note
+
+    Admin tokens never expire, unless you delete them.
