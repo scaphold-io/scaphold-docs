@@ -1,6 +1,7 @@
 site_name: Scaphold | GraphQL Tutorials & Documentation
 site_description: Documentation for Scaphold.io's GraphQL Backend-as-a-Service. Learn how to rapidly build applications with GraphQL.
 site_url: 'https://docs.scaphold.io'
+copyright: 'Copyright &copy; 2017 Scaphold, Inc.'
 pages:
     - Welcome: index.md
     - Getting Started:
