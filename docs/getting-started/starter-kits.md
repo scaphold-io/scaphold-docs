@@ -44,8 +44,8 @@ Pick the stack and platform that works for you. We have already built the scaffo
     </tr>
     <tr>
       <td style="text-align: center">
-        <img src="/images/quickstart/angular2.svg" alt="Angular 2" style="width: 100px; height: 100px" />
-        <a href="https://angular.io/"><h3>Angular 2</h3></a>
+        <img src="/images/quickstart/angular2.svg" alt="Angular" style="width: 100px; height: 100px" />
+        <a href="https://angular.io/"><h3>Angular</h3></a>
       </td>
       <td>
         Angular is a web and mobile development framework that came out of Google. It promotes bi-directional
@@ -54,6 +54,9 @@ Pick the stack and platform that works for you. We have already built the scaffo
       </td>
       <td>
         <ul>
+          <li>
+            <a href="https://github.com/scaphold-io/angular4-apollo-client-starter-kit">Angular 4 & Apollo Client</a>
+          </li>
           <li>
             <a href="https://github.com/scaphold-io/angular2-apollo-client-webpack-starter">Angular 2 & Apollo Client</a>
           </li>
@@ -162,3 +165,10 @@ Pick the stack and platform that works for you. We have already built the scaffo
     </tr>
   </tbody>
 </table>
+
+!!! note ""
+
+    **Like to contribute?**
+
+    - Submit a PR [here](https://github.com/scaphold-io/scaphold-docs/edit/master/docs/getting-started/starter-kits.md).
+    - Send us your starter kit by emailing [hi@scaphold.io](mailto:hi@scaphold.io).
