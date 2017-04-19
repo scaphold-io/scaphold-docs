@@ -34,3 +34,15 @@ strong, b {
 .md-typeset .codehilite::-webkit-scrollbar-thumb:hover {
   background-color: #1DAAA0;
 }
+
+@media only screen and (max-width: 76.1875em) {
+  html .md-nav--primary .md-nav__title--site {
+    background-color: #1DAAA0;
+  }
+}
+
+@media only screen and (max-width: 59.9375em) {
+  .md-nav__source {
+    background-color: #00776D;
+  }
+}
