@@ -3,12 +3,9 @@ site_description: Documentation for Scaphold.io's GraphQL Backend-as-a-Service. 
 site_url: 'https://docs.scaphold.io'
 copyright: 'Copyright &copy; 2017 Scaphold, Inc.'
 pages:
-    - Welcome: index.md
-    - Getting Started:
-      - Quickstart Video: getting-started/quickstart-video.md
-      - Starter Kits: getting-started/starter-kits.md
-      - Community: getting-started/community.md
-    - Core Data:
+    - Quick Start: index.md
+    - Starter Kits: getting-started/starter-kits.md
+    - Core Data Platform:
       - Introduction: coredata/index.md
       - The Schema: coredata/schema.md
       - Queries: coredata/queries.md
@@ -81,9 +78,10 @@ pages:
       - Integrate Apollo Optics: tutorials/apollo-optics-graphql-server.md
       - Add Social Auth: tutorials/adding-social-auth.md
     - Errors: errors.md
-    - Changelog: changelog.md
+    - Community: getting-started/community.md
     - FAQ: faq.md
 theme: 'material'
+theme_dir: 'theme'
 extra_css:
   - css/base.css
   - css/styles.css

@@ -79,36 +79,59 @@ DateTime | Valid timestamp that can be converted to standard ISO 8601 date time 
 Scaphold provides 3 objects types to start off with: <a href="#token-auth">User</a>, <a href="#roles">Role</a>, and <a href="#files">File</a>.
 
 ```graphql
-type Computer {
+type User implements Node {
+  id: ID!
+  username: String!
+  password: String!
+  roles: RoleConnection
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+  lastLogin: DateTime!
+}
+
+type Role implements Node {
   id: ID!
   name: String!
-  brand: String
-  memory: Float
-  diskSpace: Float
-  numCores: Int
-  price: Float
-  isNew: Boolean
+  members: UserConnection
+  createdAt: TimeStamp!
+  modifiedAt: TimeStamp!
+}
+
+type File implements Node, Blob {
+  id: ID!
+  name: String
+  blobUrl: String
+  blobMimeType: String
+  createdAt: DateTime!
+  modifiedAt: DateTime!
 }
 ```
 
 Scaphold provides 3 interfaces to start off with: <a href="#the-schema">Node</a>, <a href="#the-schema">Timestamped</a>, and <a href="#files">Blob</a>.
 
 ```graphql
-interface Animal {
-  name: String
-  height: Float
-  weight: Float
+interface Node {
+  id: ID!
+}
+
+interface Timestamped {
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+interface Blob {
+  blobUrl: String
+  blobMimeType: String
 }
 ```
 
-Scaphold provides 2 enums to start off with: <a href="#authentication">CredentialType</a> and <a href="#permissions-authorization">AccessLevel</a>.
+Scaphold provides 1 enum off the bat called <a href="#permissions-authorization">AccessLevel</a>.
 
 ```graphql
-enum HouseTypeEnum {
-  condominium
-  apartment
-  house
-  duplex
+enum AccessLevel {
+  readonly
+  readwrite
+  admin
 }
 ```
 
