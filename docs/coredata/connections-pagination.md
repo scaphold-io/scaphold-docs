@@ -374,3 +374,9 @@ The above command returns an object structured like this:
   }
 }
 ```
+
+## Removing Connections
+
+Often times, connections will need to be removed.
+
+In order to update a connection field's ID to remove the connected object, you should set the related ID field to `""` (empty string, double quotes).

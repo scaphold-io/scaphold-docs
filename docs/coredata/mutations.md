@@ -207,6 +207,10 @@ The above command returns an object structured like this:
 }
 ```
 
+!!! note "Managing Connection IDs"
+
+    For connections, in order to update a connection field's ID to remove the connected object, you should set the related ID field to `""` (empty string, double quotes).
+
 ### Delete
 
 Use delete operations to delete data from your API. Delete requires the unique global identifier `id`
