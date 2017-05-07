@@ -1,5 +1,22 @@
 # Changelog
 
+## May 7, 2017
+
+- Added ability to add connections in the "Add Type" and "Edit Type" side bars
+
+- Bug fixes:
+    - Enums now allow single character values
+    - Fix authentication error in Scaphold admin portal for expired or malformed tokens
+
+## April 22, 2017
+
+- Added **new** [Hobby pricing tier](https://scaphold.io/pricing)
+
+- Algolia `query` input field is no longer mandatory
+
+- Bug fixes:
+    - Fixed font-face for non-Mac environments
+
 ## April 12, 2017
 
 - Added [Algolia geo-search query parameters](/integrations/search/#geo-search)
